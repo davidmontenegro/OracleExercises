@@ -1245,14 +1245,14 @@ PL/SQL procedure successfully completed.
 ### Performance
 11. Create a program (plsql and/or java, or any other language) that can extract to a flat file (csv), 1 file per location: the item, department, unit cost, stock on hand quantity and stock value.
 Creating the 1000 files should take less than 30s.
--> I've tried different approaches to try to achieve the 30s goal, but still was not able to meet this run time. By doing some parallelism (e.g. using different sessions) the time of export could be reduced.
--> Check the files:
-    -> PL/SQL procedure: P_EXTRACT_STOCK_INFO: p_extract_stock_info.sql.
+- I've tried different approaches to try to achieve the 30s goal, but still was not able to meet this run time. By doing some parallelism (e.g. using different sessions) the time of export could be reduced.
+- Check the files:
+    - PL/SQL procedure: P_EXTRACT_STOCK_INFO: p_extract_stock_info.sql.
         - Takes as input parameters the directory name (must be defined in the database directories), "first location" and "last_location". Extracts the locations between thes"first location" and "last location" (inclusive) to the directory passed in first argument.
             - Can be called in different sessions for diferent locations to reduce the export time.
-    -> Java: exportCSVFile.java
+    - Java: exportCSVFile.java
         - Very simple script where you can define your DB, output directory and location to export. It will export the information to a csv file to the directory and with location name defined.
-    -> KornShell + SQL*Plus implementation: export_location.sh
+    - KornShell + SQL*Plus implementation: export_location.sh
         - Takes as input parameter the location to export
             - Can be used in a loop through all location or called several instances in parallel with the diferent locations.
 NOTE: All these approaches could be improved in some aspects (including better exception handling), but the aim here was to try to achieve the lowest export time and from the three approaches the procedure was the best performant.
