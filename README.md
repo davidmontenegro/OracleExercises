@@ -1232,11 +1232,11 @@ Note
 	```
 
 - Script Output
-	- Start: 2024-05-07 12:11:41
-   	- End: 2024-05-07 12:11:48
+Start: 2024-05-07 12:11:41
+End: 2024-05-07 12:11:48
 
 
-    PL/SQL procedure successfully completed.
+PL/SQL procedure successfully completed.
 
 
 11. Please have a look into the AWR report (AWR.html) in attachment and let us know what is the problem that the AWR is highlighting and potential solution.
