@@ -1112,31 +1112,31 @@ Please consider that your reply for each point should include an explanation and
 
 4. Create a view that can be used at screen level to show only the required fields
     - Lets assume that the required fields are: Item ID, Item description, Location ID, Location Description, Stock on hand and Unit cost. The view shoud look something like the following:
-	```sql
-      	CREATE OR REPLACE VIEW stock_summary AS
-            SELECT
-                item.item AS "Item ID",
+```sql
+CREATE OR REPLACE VIEW stock_summary AS
+	SELECT
+		item.item AS "Item ID",
                 item.item_desc AS "Item description",
                 loc.loc AS "Location ID",
                 loc.loc_desc AS "Location description",
                 soh.stock_on_hand AS "Stock on hand",
                 soh.unit_cost AS "Unit Cost"
-            FROM
+	FROM
                 item_loc_soh soh,
                 item item,
                 loc loc
-            WHERE
+	WHERE
                 item.item = soh.item
                 AND item.dept = soh.dept
                 AND loc.loc = soh.loc;
-        ```
+```
 
 5. Create a new table that associates user to existing dept(s)
-	```sql
+```sql
 	CREATE TABLE dept_users (dept       NUMBER(4)    NOT NULL,
-							 dept_user  VARCHAR2(50) NOT NULL,
-							 CONSTRAINT uk_dept_user UNIQUE (dept, dept_user));
-	```
+				 dept_user  VARCHAR2(50) NOT NULL,
+				 CONSTRAINT uk_dept_user UNIQUE (dept, dept_user));
+```
 
 ### PLSQL Development
 6. Create a package with procedure or function that can be invoked by store or all stores to save the item_loc_soh to a new table that will contain the same information plus the stock value per item/loc (unit_cost*stock_on_hand)
