@@ -1111,9 +1111,9 @@ Please consider that your reply for each point should include an explanation and
 3. Your suggestion to avoid row contention at table level parameter because of high level of concurrency
 
 4. Create a view that can be used at screen level to show only the required fields
-    -> Lets assume that the required fields are: Item ID, Item description, Location ID, Location Description, Stock on hand and Unit cost. The view shoud look something like the following:
-        CREATE OR REPLACE VIEW stock_summary AS
-        ```sql
+    - Lets assume that the required fields are: Item ID, Item description, Location ID, Location Description, Stock on hand and Unit cost. The view shoud look something like the following:
+	```sql
+      	CREATE OR REPLACE VIEW stock_summary AS
             SELECT
                 item.item AS "Item ID",
                 item.item_desc AS "Item description",
@@ -1140,13 +1140,13 @@ Please consider that your reply for each point should include an explanation and
 
 ### PLSQL Development
 6. Create a package with procedure or function that can be invoked by store or all stores to save the item_loc_soh to a new table that will contain the same information plus the stock value per item/loc (unit_cost*stock_on_hand)
-    -> I was not quite sure if the main goal was to copy the data or move it to new a new table. If was moving it it could be done by moving the partiions to new tables, which would be faster.
-    -> Also was not sure if wvery time the "backup" is done it should replace the existing tables (if already exist) or should append to the existing tables or should be created always new tables.
-    -> Please check the files:
+    - I was not quite sure if the main goal was to copy the data or move it to new a new table. If was moving it it could be done by moving the partiions to new tables, which would be faster.
+    - Also was not sure if wvery time the "backup" is done it should replace the existing tables (if already exist) or should append to the existing tables or should be created always new tables.
+    - Please check the files:
         - pkg_store.pks.sql (package specification).
         - pkg_store.pkb.sql (package body).
-    -> If the package is called with a single location then a new table item_loc_soh_{LOCATION}_{YYYYMMDDHH24MISS} is created.
-    -> If the package is called with no input parameter (for all locations) then the table item_loc_soh_all is created with the last "screenshot" of the item_loc_soh.
+    - If the package is called with a single location then a new table item_loc_soh_{LOCATION}_{YYYYMMDDHH24MISS} is created.
+    - If the package is called with no input parameter (for all locations) then the table item_loc_soh_all is created with the last "screenshot" of the item_loc_soh.
 7. Create a data filter mechanism that can be used at screen level to filter out the data that user can see accordingly to dept association (created previously)
 8. Create a pipeline function to be used in the location list of values (drop down)
 ```sql
@@ -1224,16 +1224,16 @@ Note
 
 
 10. Run the previous method that was created on 6. for all the stores from item_loc_soh to the history table. The entire migration should not take more than 10s to run (don't use parallel hint to solve it :))
--> The script below took less than 10s to run, but unfortunately parallel was used to achieve this run time.
-```sql
-  BEGIN
-    PKG_STORE.update_forenv_acc();
-  END;
-```
+	- The script below took less than 10s to run, but unfortunately parallel was used to achieve this run time.
+	```sql
+	  BEGIN
+	    PKG_STORE.update_forenv_acc();
+	  END;
+	```
 
--> Script Output
-    Start: 2024-05-07 12:11:41
-    End: 2024-05-07 12:11:48
+- Script Output
+	- Start: 2024-05-07 12:11:41
+   	- End: 2024-05-07 12:11:48
 
 
     PL/SQL procedure successfully completed.
