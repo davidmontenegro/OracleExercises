@@ -1133,9 +1133,9 @@ CREATE OR REPLACE VIEW stock_summary AS
 
 5. Create a new table that associates user to existing dept(s)
 ```sql
-	CREATE TABLE dept_users (dept       NUMBER(4)    NOT NULL,
-				 dept_user  VARCHAR2(50) NOT NULL,
-				 CONSTRAINT uk_dept_user UNIQUE (dept, dept_user));
+CREATE TABLE dept_users (dept       NUMBER(4)    NOT NULL,
+			 dept_user  VARCHAR2(50) NOT NULL,
+			 CONSTRAINT uk_dept_user UNIQUE (dept, dept_user));
 ```
 
 ### PLSQL Development
