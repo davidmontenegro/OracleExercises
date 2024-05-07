@@ -1,7 +1,7 @@
 Here are some considerations to take when reviewing the answers:
--> I was not able to create the workspace in apex (still waiting to be approved), although I have never worked with Apex, so I would need much more time to learn about it and try to do the exercises related to it.
--> I've used some tools at my disposal to answer the questions in the quickest and best possible manner.
--> I was not able to answer all the questions.
+- I was not able to create the workspace in apex (still waiting to be approved), although I have never worked with Apex, so I would need much more time to learn about it and try to do the exercises related to it.
+- I've used some tools at my disposal to answer the questions in the quickest and best possible manner.
+- I was not able to answer all the questions.
 
 # Instructions
 - Create account in https://apex.oracle.com/en/
@@ -1082,21 +1082,21 @@ Item loc stock an hand represents a snapshot table of stock in a specific moment
 ### Data Model
 Please consider that your reply for each point should include an explanation and corresponding sql code 
 1. Primary key definition and any other constraint or index suggestion
-    -> Table ITEM should have a primary key on column ITEM. Added upon table creation, but could be done after, using the following (DDL) statement:
+    - Table ITEM should have a primary key on column ITEM. Added upon table creation, but could be done after, using the following (DDL) statement:
         ```sql
         ALTER TABLE item ADD CONSTRAINT item_pk PRIMARY KEY (item);
         ```
-    -> Table LOC should have a primary key on column LOC. Added upon table creation, but could be done after, using the following (DDL) statement:
+    - Table LOC should have a primary key on column LOC. Added upon table creation, but could be done after, using the following (DDL) statement:
         ```sql
         ALTER TABLE item ADD CONSTRAINT loc_pk PRIMARY KEY (item);
         ```
-    -> Table ITEM_LOC_SOH foreign keys. Added upon table creation, but could be done after, using the following (DDL) statement:
+    - Table ITEM_LOC_SOH foreign keys. Added upon table creation, but could be done after, using the following (DDL) statement:
         ```sql
         ALTER TABLE item_loc_soh ADD FOREIGN KEY (item) REFERENCES item (item);
         ALTER TABLE item_loc_soh ADD FOREIGN KEY (loc) REFERENCES item (loc);
         ```
 
-    -> The indexes proposed are the following:
+    - The indexes proposed are the following:
         ```sql
         CREATE INDEX index_soh_item ON item_loc_soh (item);
         CREATE INDEX index_soh_loc ON item_loc_soh (loc);
