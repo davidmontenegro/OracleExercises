@@ -7,12 +7,12 @@ import java.io.FileNotFoundException;
 
 public class exportCSVFile {
     public static void main(String[] args) throws Exception {
-        String serverName = "uxpck14q.ux.loc";
-        String portNumber = "1532";
-        String sid = "CORQ";
+        String serverName = "server.name";
+        String portNumber = "portNumber";
+        String sid = "QLD";
         String url = "jdbc:oracle:thin:@" + serverName + ":" + portNumber + "/" + sid;
-        String username = "admco";
-        String password = "admcoadmco";
+        String username = "userName";
+        String password = "password";
         String outputPath = "C:\\Users\\675105\\Desktop\\tmp\\";
 
         int location = 197;
