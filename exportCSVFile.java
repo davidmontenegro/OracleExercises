@@ -51,13 +51,13 @@ public class exportCSVFile {
         int numberOfColumns = meta.getColumnCount();
         String dataHeaders = "\"" + meta.getColumnName(1) + "\"";
         for (int i = 2; i < numberOfColumns + 1; i++) {
-          dataHeaders += ",\"" + meta.getColumnName(i).replaceAll("\"", "\\\"") + "\"";
+          dataHeaders += ",\"" + meta.getColumnName(i) + "\"";
         }
         csvWriter.println(dataHeaders);
         while (rs.next()) {
-          String row = "\"" + rs.getString(1).trim().replaceAll("\"", "\\\"") + "\"";
+          String row = "\"" + rs.getString(1).trim() + "\"";
           for (int i = 2; i < numberOfColumns + 1; i++) {
-            row += ",\"" + rs.getString(i).trim().replaceAll("\"", "\\\"") + "\"";
+            row += ",\"" + rs.getString(i).trim() + "\"";
           }
           csvWriter.println(row);
         }
